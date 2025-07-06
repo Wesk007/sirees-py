@@ -26,7 +26,7 @@ def registro():
             'message': 'Falta el UID'
         }), 422
 
-    # Aquí podrías insertar en BD, validar, etc.
+    # Aquí podrías insertar en BD, validar, etc. jajajaj
 
     return jsonify({
         'status': 'ok',
