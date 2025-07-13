@@ -47,7 +47,8 @@ def enviar_a_api(uid):
         print(f"[✖] Excepción al enviar: {e}")
 
 def main():
-    port = find_arduino() or '/dev/ttyUSB0'
+    #port = find_arduino() or '/dev/ttyUSB0'
+    port = '/tmp/ttyV0'  # Cambia esto al puerto correcto si es necesario
     baudrate = 9600
     print(f"Conectando a {port} a {baudrate} baudios...")
     try:
