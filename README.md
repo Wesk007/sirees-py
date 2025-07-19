@@ -23,7 +23,7 @@ socat -d -d PTY,link=/tmp/ttyV0 PTY,link=/tmp/ttyV1
 ### 4. Enviar datos de prueba (imitando un escaneo de tarjeta RFID)
 
 ```bash
-echo "123" > /tmp/ttyV1
+echo "UID:123" > /tmp/ttyV1
 ```
 
 > Asegúrate de que tu script esté leyendo desde `/tmp/ttyV0`.

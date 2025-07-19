@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 import serial
 import time
-import requests
 import webbrowser
-import urllib.parse
 
 # 🌐 URL de tu API (modifica con la IP y ruta correcta)
 apiurl = "https://eamisdev.com/api/registro.php"
@@ -19,32 +17,11 @@ def find_arduino():
             return port.device
     return None
 
-# 🌐 Enviar UID a la API, esperar JSON y abrir viewer
 def enviar_a_api(uid):
-    try:
-        payload = {"uid": uid}
-        r = requests.post(apiurl, json=payload, timeout=5)
-        if not r.ok:
-            print(f"[✖] Error {r.status_code}: {r.text}")
-            return
-
-        # Intentar parsear JSON
-        try:
-            data = r.json()
-            print(f"[→] UID {uid} enviado con éxito. Respuesta JSON:", data)
-            status = data.get('status', '')
-        except ValueError:
-            print("[✖] Error: la respuesta no es un JSON válido.")
-            status = ''
-
-        # Construir URL con query params correctamente escapados
-        params = {'uid': uid, 'status': status}
-        url = f"{viewer_url}?{urllib.parse.urlencode(params)}"
-        print(f"[→] Abriendo vista en: {url}")
-        webbrowser.open(url)
-
-    except Exception as e:
-        print(f"[✖] Excepción al enviar: {e}")
+    # Construir URL del viewer con el UID
+    url = f"{viewer_url}?uid={uid}"
+    print(f"[→] Abriendo vista en: {url}")
+    webbrowser.open(url)
 
 def main():
     #port = find_arduino() or '/dev/ttyUSB0'
