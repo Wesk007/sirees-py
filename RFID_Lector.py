@@ -33,8 +33,9 @@ def main():
         time.sleep(2)
         print("Esperando tarjetas RFID... (Ctrl+C para salir)")
         while True:
-            if ser.in_waiting:
-                line = ser.readline().decode('utf-8', errors='ignore').strip()
+            line = ser.readline().decode('utf-8', errors='ignore').strip()
+            if line:
+                print(f"[DEBUG] Recibido: {repr(line)}")
                 if line.startswith("UID:"):
                     uid = line.split("UID:")[1].strip()
                     print(f"Tarjeta detectada: {uid}")

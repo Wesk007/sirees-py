@@ -16,6 +16,11 @@ python Python_API.py
 
 ```bash
 socat -d -d PTY,link=/tmp/ttyV0 PTY,link=/tmp/ttyV1
+
+
+socat -d -d \
+  PTY,link=/tmp/ttyV0,rawer,echo=0,ignoreeof \
+  PTY,link=/tmp/ttyV1,rawer,echo=0,ignoreeof
 ```
 
 > `/tmp/ttyV0` será usado por el script Python para leer datos como si fuera un lector RFID real.

@@ -1,4 +1,6 @@
 .venv/
 .idea/
 venv/
+build/
+dist/
 .DS_Store
